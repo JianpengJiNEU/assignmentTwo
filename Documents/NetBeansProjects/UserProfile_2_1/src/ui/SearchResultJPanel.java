@@ -39,6 +39,7 @@ public class SearchResultJPanel extends javax.swing.JPanel {
         this.userProfileDirectory = userProfileDirectory;
         initComponents();
         addTableHeader();
+     
     }
 
     private void addTableHeader() {
@@ -86,6 +87,8 @@ public class SearchResultJPanel extends javax.swing.JPanel {
         jTextFieldTeamInfo = new javax.swing.JTextField();
         telephoneLabel = new javax.swing.JLabel();
         jTextFieldTelephone = new javax.swing.JTextField();
+        updateJButton = new javax.swing.JButton();
+        removeButton = new javax.swing.JButton();
         emailLabel = new javax.swing.JLabel();
         jTextFieldEmail = new javax.swing.JTextField();
         uploadPhotoButton = new javax.swing.JButton();
@@ -113,6 +116,20 @@ public class SearchResultJPanel extends javax.swing.JPanel {
 
         telephoneLabel.setText("Telephone");
 
+        updateJButton.setText("Update Data");
+        updateJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateJButtonActionPerformed(evt);
+            }
+        });
+
+        removeButton.setText("Delete");
+        removeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeButtonActionPerformed(evt);
+            }
+        });
+
         emailLabel.setText("Email");
 
         uploadPhotoButton.setText("Upload Photo");
@@ -136,7 +153,7 @@ public class SearchResultJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Name", "Gender", "Language", "Subject", "Image"
+                "Name", "Employee ID", "Age", "Gender", "Start date", "Level", "Team info", "Position title", "Phone number", "Email", "Image"
             }
         ));
         userProfileTable.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -174,38 +191,44 @@ public class SearchResultJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
                 .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ageLabel)
                     .addComponent(firstNameLabel)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(streetLine1Label)
-                        .addGap(57, 57, 57)
+                        .addGap(83, 83, 83)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextFieldName, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldAge, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 285, Short.MAX_VALUE)
+                            .addComponent(jTextFieldAge, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cityLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextFieldPositionTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lastNameLabel)
-                    .addComponent(dobLabel)
-                    .addComponent(cityLabel))
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldPositionTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldGender, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldEmployeeID, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelImage, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(426, 426, 426)
-                .addComponent(jButtonSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lastNameLabel)
+                        .addGap(35, 35, 35)
+                        .addComponent(jTextFieldEmployeeID, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(251, 251, 251)
+                        .addComponent(jLabelImage, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(streetLine1Label)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jTextFieldLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(dobLabel)
+                                .addGap(64, 64, 64)
+                                .addComponent(jTextFieldGender, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(34, 34, 34))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,38 +240,32 @@ public class SearchResultJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(firstNameLabel)
-                                    .addComponent(jTextFieldName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jTextFieldAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ageLabel))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(streetLine1Label))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jTextFieldLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jTextFieldEmployeeID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lastNameLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(dobLabel)
-                                    .addComponent(jTextFieldGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cityLabel)
-                                    .addComponent(jTextFieldPositionTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addGap(14, 14, 14)
-                .addComponent(jButtonSearch)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(firstNameLabel)
+                                .addComponent(jTextFieldName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jTextFieldEmployeeID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lastNameLabel)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jTextFieldAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(ageLabel)
+                                .addComponent(dobLabel))
+                            .addComponent(jTextFieldGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(15, 15, 15)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(streetLine1Label)
+                                .addComponent(jTextFieldLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cityLabel)
+                                .addComponent(jTextFieldPositionTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(51, 51, 51)
+                        .addComponent(jButtonSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(32, 32, 32)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(72, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -337,6 +354,68 @@ public class SearchResultJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldEmployeeIDActionPerformed
 
+    private void updateJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateJButtonActionPerformed
+        // TODO add your handling code here:
+        int row = userProfileTable.getSelectedRow();
+        if (row < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row!!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        String name = jTextFieldName.getText();
+        String employeeID = jTextFieldEmployeeID.getText();
+        String age = jTextFieldAge.getText();
+        String gender = jTextFieldGender.getText();
+        String level = jTextFieldLevel.getText();
+        String teamInfo = jTextFieldTeamInfo.getText();
+        String positionTitle = jTextFieldPositionTitle.getText();
+        String phone = jTextFieldTelephone.getText();
+        String email = jTextFieldEmail.getText();
+        UserProfile user = new UserProfile();
+        user.setName(name);
+        user.setEmployeeID(employeeID);
+        user.setAge(age);
+        user.setGender(gender);
+        user.setStartDate(startDate.getDate());
+        user.setLevel(level);
+        user.setTeamInfo(teamInfo);
+        user.setPositionTitle(positionTitle);
+        user.setTelephoneNumber(phone);
+        user.setEmail(email);
+
+        JLabel imageLabel = new JLabel();
+        ImageIcon imageicon = new ImageIcon(selectedImagePath);
+        Image img = imageicon.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
+        imageLabel.setIcon(new ImageIcon(img));
+
+        Image img2 = imageicon.getImage().getScaledInstance(133, 124, Image.SCALE_SMOOTH);
+        user.setImageIcon(new ImageIcon(img2));
+        userProfileDirectory.updateUserProfile(row, user);
+        refreshTable();
+        //Checking if one or more field is empty
+        if (name.isEmpty() || gender.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "One Or More Fields Are Empty");
+        } else {
+            JOptionPane.showMessageDialog(null, "Data updated");
+            //clear fields after inserting the data
+            clearFields();
+        }
+    }//GEN-LAST:event_updateJButtonActionPerformed
+
+    private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
+        // TODO add your handling code here:
+ 
+        int row = userProfileTable.getSelectedRow();
+        if (row < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row!!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+//        UserProfile user = (UserProfile) supplierTable.getValueAt(row, 0);
+        userProfileDirectory.removeUserProfile(row);
+        refreshTable();
+
+    }//GEN-LAST:event_removeButtonActionPerformed
+
     private void userProfileTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userProfileTableMouseClicked
         // TODO add your handling code here:
         int selectedRow = userProfileTable.getSelectedRow();
@@ -359,8 +438,8 @@ public class SearchResultJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_userProfileTableMouseClicked
 
     private void jButtonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchActionPerformed
-
-        List<UserProfile> result = new ArrayList<UserProfile>();
+        // TODO add your handling code here:
+         List<UserProfile> result = new ArrayList<UserProfile>();
         for (UserProfile user : userProfileDirectory.getUserProfileList()) {
             String name = jTextFieldName.getText();
             String employeeID = jTextFieldEmployeeID.getText();
@@ -435,6 +514,7 @@ public class SearchResultJPanel extends javax.swing.JPanel {
             row[7] = user.getPositionTitle();
             row[8] = user.getTelephoneNumber();
             row[9] = user.getEmail();
+            
 
             JLabel imageLabel = new JLabel();
             ImageIcon imageicon = user.getImageIcon();
@@ -443,6 +523,8 @@ public class SearchResultJPanel extends javax.swing.JPanel {
             row[10] = imageLabel;
 //            model.addRow(new Object[]{user.getName(), "", "", user.getGender(), "", "", imageLabel});
             model.addRow(row);
+
+            System.out.println(user.getName());
 
         }
     }
@@ -467,10 +549,12 @@ public class SearchResultJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField jTextFieldTeamInfo;
     private javax.swing.JTextField jTextFieldTelephone;
     private javax.swing.JLabel lastNameLabel;
+    private javax.swing.JButton removeButton;
     private com.toedter.calendar.JDateChooser startDate;
     private javax.swing.JLabel streetLine1Label;
     private javax.swing.JLabel streetLine2Label;
     private javax.swing.JLabel telephoneLabel;
+    private javax.swing.JButton updateJButton;
     private javax.swing.JButton uploadPhotoButton;
     private javax.swing.JTable userProfileTable;
     // End of variables declaration//GEN-END:variables

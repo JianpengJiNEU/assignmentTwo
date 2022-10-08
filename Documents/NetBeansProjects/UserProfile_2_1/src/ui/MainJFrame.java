@@ -37,6 +37,7 @@ public class MainJFrame extends javax.swing.JFrame {
         createButton = new javax.swing.JButton();
         searchButton = new javax.swing.JButton();
         viewButton = new javax.swing.JButton();
+        jButtonUpdate = new javax.swing.JButton();
         jWorkPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -62,6 +63,13 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        jButtonUpdate.setText("Update");
+        jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUpdateActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jButtonPanelLayout = new javax.swing.GroupLayout(jButtonPanel);
         jButtonPanel.setLayout(jButtonPanelLayout);
         jButtonPanelLayout.setHorizontalGroup(
@@ -72,7 +80,8 @@ public class MainJFrame extends javax.swing.JFrame {
                     .addGroup(jButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(searchButton, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
                         .addComponent(createButton, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
-                    .addComponent(viewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(viewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jButtonPanelLayout.setVerticalGroup(
@@ -80,11 +89,13 @@ public class MainJFrame extends javax.swing.JFrame {
             .addGroup(jButtonPanelLayout.createSequentialGroup()
                 .addGap(78, 78, 78)
                 .addComponent(createButton)
-                .addGap(37, 37, 37)
+                .addGap(29, 29, 29)
                 .addComponent(viewButton)
-                .addGap(42, 42, 42)
+                .addGap(33, 33, 33)
+                .addComponent(jButtonUpdate)
+                .addGap(34, 34, 34)
                 .addComponent(searchButton)
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
 
         split.setLeftComponent(jButtonPanel);
@@ -134,6 +145,12 @@ public class MainJFrame extends javax.swing.JFrame {
         split.setRightComponent(viewJPanel);
     }//GEN-LAST:event_viewButtonActionPerformed
 
+    private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
+        // TODO add your handling code here:
+        UpdateJPanel updateJPanel = new UpdateJPanel(userProfileDirectory);
+        split.setRightComponent(updateJPanel);
+    }//GEN-LAST:event_jButtonUpdateActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -173,6 +190,7 @@ public class MainJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton createButton;
     private javax.swing.JPanel jButtonPanel;
+    private javax.swing.JButton jButtonUpdate;
     private javax.swing.JPanel jWorkPanel;
     private javax.swing.JButton searchButton;
     private javax.swing.JSplitPane split;
